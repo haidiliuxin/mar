@@ -5,11 +5,9 @@ from collections import Counter, defaultdict
 
 START = "<START>"
 END = "<END>"
-PRINTABLE_ASCII = string.printable[:95]
-
+PRINTABLE_ASCII = tuple(chr(code) for code in range(32, 127))
 
 class MarkovModel:
-    """固定阶 whole-string Markov 口令模型。"""
 
     def __init__(
         self,
@@ -20,12 +18,6 @@ class MarkovModel:
         min_length=4,
         max_length=40,
     ):
-        if order < 1 or delta <= 0 or min_length < 1 or max_length < min_length:
-            raise ValueError("order / delta / 长度范围参数不合法")
-        if normalization not in ("end", "distribution"):
-            raise ValueError("normalization 只能是 end 或 distribution")
-        if len(set(alphabet)) != len(alphabet):
-            raise ValueError("alphabet 中不能有重复字符")
 
         self.order = order
         self.normalization = normalization
@@ -40,18 +32,11 @@ class MarkovModel:
         self.training_total = 0
 
     def fit(self, corpus):
-        """corpus 中每项为 (出现次数, 口令)。"""
         self.transitions.clear()
         self.length_counts.clear()
         self.training_total = 0
 
         for count, password in corpus:
-            if count <= 0:
-                raise ValueError("口令频数必须大于 0")
-            if not self.min_length <= len(password) <= self.max_length:
-                raise ValueError(f"口令长度超出范围：{password!r}")
-            if any(character not in self.alphabet_set for character in password):
-                raise ValueError(f"口令包含字母表外字符：{password!r}")
 
             self.training_total += count
             self.length_counts[len(password)] += count
@@ -75,7 +60,6 @@ class MarkovModel:
         return character_total + self.delta * len(self.alphabet)
 
     def transition_probability(self, context, symbol, current_length):
-        """计算下一符号概率，current_length 是当前前缀长度。"""
         context = tuple(context[-self.order:])
         counter = self.transitions.get(context, Counter())
 
