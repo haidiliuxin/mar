@@ -28,6 +28,7 @@ def draw_probability_curves(curves, output_path):
     plt.xlabel("-log2 P(password)")
     plt.ylabel("Covered fraction")
     plt.title("Probability-threshold curves")
+    plt.xlim(0, 80)
     plt.ylim(0, 1.02)
     plt.grid(alpha=0.25)
     plt.legend()
@@ -70,3 +71,11 @@ def make_figures(result_directory):
         result["models"],
         result_directory / "anll_comparison.svg",
     )
+
+if __name__ == "__main__":
+    # 请将这里的路径替换为你存放 CSV 和 JSON 结果文件的实际目录
+    # 例如你在 D:\pscode\mar-main\data\results，则填入该路径
+    target_dir = r"D:\pscode\mar-main\probability_results\scenario2_dis" 
+    print(f"正在处理目录: {target_dir}")
+    make_figures(target_dir)
+    print("图表已成功生成并覆盖原文件！")

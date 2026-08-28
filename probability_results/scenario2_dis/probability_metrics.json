@@ -1,0 +1,81 @@
+{
+  "configuration": {
+    "orders": [
+      3,
+      4,
+      5
+    ],
+    "normalizations": [
+      "distribution"
+    ],
+    "delta": 0.01,
+    "min_length": 4,
+    "max_length": 40,
+    "theta": 0.8,
+    "thresholds": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80
+    ],
+    "training_file": "D:\\pscode\\mar-main\\data\\rockyou-train50.txt.bz2",
+    "testing_file": "D:\\pscode\\mar-main\\data\\rockyou-test50.txt.bz2"
+  },
+  "testing": {
+    "types": 7163001,
+    "occurrences": 16461397
+  },
+  "models": {
+    "ws-mc3-dis": {
+      "ANLL": 30.80730589814149,
+      "ANLL_theta": 20.991588612569338,
+      "theta": 0.8,
+      "threshold_coverages": {
+        "20": 0.12874010632268937,
+        "30": 0.5549872225303842,
+        "40": 0.8345888869577716,
+        "50": 0.9346590085883962,
+        "60": 0.971791701518407,
+        "70": 0.9877992736582442,
+        "80": 0.994788109417445
+      },
+      "zero_probability_occurrences": 0,
+      "zero_probability_types": 0
+    },
+    "ws-mc4-dis": {
+      "ANLL": 29.801517600304393,
+      "ANLL_theta": 19.73354198133679,
+      "theta": 0.8,
+      "threshold_coverages": {
+        "20": 0.19847385978237447,
+        "30": 0.6128445842111699,
+        "40": 0.8315565197777564,
+        "50": 0.9244582947607667,
+        "60": 0.966076694462809,
+        "70": 0.9850162170318838,
+        "80": 0.9931228801540963
+      },
+      "zero_probability_occurrences": 0,
+      "zero_probability_types": 0
+    },
+    "ws-mc5-dis": {
+      "ANLL": 30.258650469235768,
+      "ANLL_theta": 19.580286161303984,
+      "theta": 0.8,
+      "threshold_coverages": {
+        "20": 0.22858017457449084,
+        "30": 0.6127876631612736,
+        "40": 0.795485644383645,
+        "50": 0.9034643293032785,
+        "60": 0.9563968963265997,
+        "70": 0.9804178223755857,
+        "80": 0.9903785201219556
+      },
+      "zero_probability_occurrences": 0,
+      "zero_probability_types": 0
+    }
+  }
+}

@@ -1,5 +1,9 @@
 __pycache__/
 *.pyc
-probability_results/
 *-withcount.txt
 *-cleaned-*.json
+probability_results/*/probability_threshold_curves.csv
+data/
+*.bz2
+*.txt
+!requirements.txt
