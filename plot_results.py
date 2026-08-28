@@ -28,6 +28,7 @@ def draw_probability_curves(curves, output_path):
     plt.xlabel("-log2 P(password)")
     plt.ylabel("Covered fraction")
     plt.title("Probability-threshold curves")
+    plt.xlim(0, 80)
     plt.ylim(0, 1.02)
     plt.grid(alpha=0.25)
     plt.legend()

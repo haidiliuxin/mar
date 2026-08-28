@@ -8,8 +8,7 @@ from pathlib import Path
 from markov_model import MarkovModel
 from plot_results import make_figures
 from probability_metrics import score_test_set
-from 数据处理 import cleaned_iterator
-
+from data_processing import cleaned_iterator
 
 def load_testing_counts(path):
     counts = Counter()
@@ -27,6 +26,10 @@ def run(args):
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     testing = load_testing_counts(args.test)
+    args.min_length = 4
+    args.max_length = 40
+    args.theta = 0.8
+    args.thresholds = [20,30,40,50,60,70,80]
     result = {
         "configuration": {
             "orders": args.orders,
@@ -100,10 +103,6 @@ def parse_args():
         default=["end", "distribution"],
     )
     parser.add_argument("--delta", type=float, default=0.01)
-    parser.add_argument("--min-length", type=int, default=4)
-    parser.add_argument("--max-length", type=int, default=40)
-    parser.add_argument("--theta", type=float, default=0.8)
-    parser.add_argument("--thresholds", type=float, nargs="+", default=[20, 30, 40, 50, 60, 70, 80])
     parser.add_argument("--output", default="probability_results")
     return parser.parse_args()
 
