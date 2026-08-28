@@ -4,9 +4,6 @@ import copy
 import bz2
 
 
-'''数据处理部分'''
-
-
 def parse_count_password_line(line: str):
     text = line.rstrip("\n\r")
     text = text.lstrip(" ")
@@ -33,7 +30,6 @@ def read_txt(file_path):
 
 
 #数据过滤：长度为4~40；全部字符为95可打印ASCii
-
 
 def is_valid(pwd: str) -> bool:
     for c in pwd:

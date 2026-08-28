@@ -4,7 +4,6 @@ from markov_model import END, START
 
 
 def generate_candidates(model, max_surprisal):
-    """生成概率满足 -log2 P(s) <= max_surprisal 的全部口令。"""
     if max_surprisal < 0:
         return
 

@@ -92,7 +92,6 @@ class MarkovModel:
         return self.length_counts[length] / self.training_total
 
     def surprisal(self, password):
-        """返回 -log2 P(password)，数值越小表示概率越高。"""
         if not self.min_length <= len(password) <= self.max_length:
             return math.inf
         if any(character not in self.alphabet_set for character in password):
@@ -121,7 +120,6 @@ class MarkovModel:
         return 0.0 if math.isinf(cost) else 2.0 ** (-cost)
 
     def next_character_options(self, history, current_length):
-        """按概率从高到低返回下一字符，供候选生成使用。"""
         options = []
         for character in self.alphabet:
             probability = self.transition_probability(history, character, current_length)
